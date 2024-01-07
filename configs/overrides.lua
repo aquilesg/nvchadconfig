@@ -4,12 +4,11 @@ M.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
-    "html",
-    "css",
+    "dockerfile",
     "javascript",
     "typescript",
-    "tsx",
     "c",
+    "cpp",
     "markdown",
     "markdown_inline",
   },
@@ -22,6 +21,8 @@ M.mason = {
   ensure_installed = {
     "lua-language-server",
     "stylua",
+    "clangd",
+    "dockerfile-language-server-nodejs",
     "gopls",
     "pyright",
     "terraform-ls",
@@ -53,9 +54,6 @@ M.cmp = {
     { name = "nvim_lua" },
     { name = "path" },
   },
-  formatting = {
-      symbol_map = { Copilot = "" }
-    }
 }
 
 return M

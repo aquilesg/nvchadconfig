@@ -36,10 +36,43 @@ local plugins = {
   },
   {
     "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        -- snippet plugin
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          require("plugins.configs.others").luasnip(opts)
+        end,
+      },
+      {
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+      },
+      {
+        "zbirenbaum/copilot-cmp",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+      },
+    },
     opts = overrides.cmp,
   },
 
-  -- Installed plugins
+  -- Custom plugins
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -49,7 +82,13 @@ local plugins = {
   },
   {
     "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
+    cmd = {
+      "ChatGPT",
+      "ChatGPTEditWithInstructions",
+      "ChatGPTActAs",
+      "ChatGPTCompleteCode",
+      "ChatGPTRun"
+    },
     config = function()
       require("chatgpt").setup({
         api_key_cmd = "cat ~/.ssh/gpt3_api_key.txt",
@@ -66,6 +105,26 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     }
+  },
+  {
+    "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {},
+    event = "VeryLazy",
+    config = function()
+      require("wtf").setup({
+        hooks = {
+            request_started = function()
+                vim.cmd("hi StatusLine ctermbg=NONE ctermfg=yellow")
+            end,
+            request_finished = vim.schedule_wrap(function()
+                vim.cmd("hi StatusLine ctermbg=NONE ctermfg=NONE")
+            end),
+        },
+      })
+    end,
   },
   {
     "folke/trouble.nvim",
@@ -173,18 +232,24 @@ local plugins = {
     end,
   },
   {
-    "jamestthompson3/nvim-remote-containers",
-    cmd = {
-      "AttachToContainer",
-      "BuildImage",
-      "StartImage",
-      "ComposeUp",
-      "ComposeDown",
-      "ComposeDestroy"
+    "gelguy/wilder.nvim",
+    config = function()
+      require("wilder").setup()
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    opts = {
     },
     config = function()
-      require ("nvim-remote-containers").setup()
+      require ("todo-comments").setup()
     end,
+  },
+  {
+    'jamestthompson3/nvim-remote-containers',
+    cmd = { "AttachToContainer", "BuildImage", "StartImage", "ComposeUp", "ComposeDown", "ComposeDestroy" },
   }
 }
 
