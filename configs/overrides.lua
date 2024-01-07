@@ -23,7 +23,9 @@ M.mason = {
     "stylua",
     "clangd",
     "dockerfile-language-server-nodejs",
+    "docker-compose-language-server-nodejs",
     "gopls",
+    "jsonls",
     "pyright",
     "terraform-ls",
     "tflint"

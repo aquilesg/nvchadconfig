@@ -3,7 +3,17 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
-local servers = { "bashls", "clangd", "gopls", "pyright", "terraformls" }
+local servers = {
+  "lua_ls",
+  "clangd",
+  "dockerls",
+  "docker_compose_language_service",
+  "gopls",
+  "jsonls",
+  "pyright",
+  "terraformls",
+  "tflint"
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
