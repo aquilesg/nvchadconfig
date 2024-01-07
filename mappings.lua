@@ -13,6 +13,9 @@ M.general = {
 
     -- Advanced gitsearch
     ["<leader>a"] = {"<cmd> AdvancedGitSearch <CR>", "AdvancedGitSearch", opts = { nowait = true}},
+
+    -- Allow Override the telescope to show hidden files
+    ["<leader>ff"] = {"<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true }},
   },
   v = {
       [">"] = { ">gv", "indent"},
