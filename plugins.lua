@@ -34,6 +34,10 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = overrides.cmp,
+  },
 
   -- Installed plugins
   {
@@ -122,7 +126,7 @@ local plugins = {
     "zbirenbaum/copilot-cmp",
     config = function ()
       require("copilot_cmp").setup()
-    end
+    end,
   },
   {
     "folke/noice.nvim",
@@ -168,6 +172,20 @@ local plugins = {
       require("headlines").setup()
     end,
   },
+  {
+    "jamestthompson3/nvim-remote-containers",
+    cmd = {
+      "AttachToContainer",
+      "BuildImage",
+      "StartImage",
+      "ComposeUp",
+      "ComposeDown",
+      "ComposeDestroy"
+    },
+    config = function()
+      require ("nvim-remote-containers").setup()
+    end,
+  }
 }
 
 return plugins
