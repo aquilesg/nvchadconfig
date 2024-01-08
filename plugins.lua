@@ -233,6 +233,7 @@ local plugins = {
   },
   {
     "gelguy/wilder.nvim",
+    event = "VeryLazy",
     config = function()
       require("wilder").setup()
     end,
@@ -247,10 +248,6 @@ local plugins = {
       require ("todo-comments").setup()
     end,
   },
-  {
-    'jamestthompson3/nvim-remote-containers',
-    cmd = { "AttachToContainer", "BuildImage", "StartImage", "ComposeUp", "ComposeDown", "ComposeDestroy" },
-  }
 }
 
 return plugins
