@@ -12,7 +12,7 @@ local servers = {
   "jsonls",
   "pyright",
   "terraformls",
-  "tflint"
+  "tflint",
 }
 
 for _, lsp in ipairs(servers) do
@@ -23,22 +23,31 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.pyright.setup {
-  on_attach = on_attach,
   settings = {
     pyright = {
       autoImportCompletion = true,
       verboseOutput = true,
       reportUnusedImport = "information",
       reportUnusedVariable = "information",
-      reportDuplicateImport = "error"
+      reportDuplicateImport = "error",
     },
     python = {
       analysis = {
         autoSearchPaths = true,
-        diagnosticMode = 'openFilesOnly',
+        diagnosticMode = "openFilesOnly",
         useLibraryCodeForTypes = true,
-        typeCheckingMode = 'off'
-      }
-    }
-  }
+        typeCheckingMode = "off",
+      },
+    },
+  },
+}
+
+lspconfig.lua_ls.setup {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
 }

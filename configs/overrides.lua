@@ -4,13 +4,15 @@ M.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
-    "dockerfile",
-    "javascript",
-    "typescript",
     "c",
     "cpp",
+    "dockerfile",
+    "hcl",
+    "json",
     "markdown",
     "markdown_inline",
+    "terraform",
+    "yaml",
   },
   indent = {
     enable = true,
@@ -21,14 +23,15 @@ M.mason = {
   ensure_installed = {
     "lua-language-server",
     "stylua",
+    "bash-language-server",
     "clangd",
-    "dockerfile-language-server-nodejs",
-    "docker-compose-language-server-nodejs",
+    "docker-compose-language-service",
+    "dockerfile-language-server",
     "gopls",
-    "jsonls",
+    "json-lsp",
     "pyright",
     "terraform-ls",
-    "tflint"
+    "tflint",
   },
 }
 

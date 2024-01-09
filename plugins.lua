@@ -1,18 +1,10 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -22,7 +14,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -37,29 +29,6 @@ local plugins = {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      {
-        -- snippet plugin
-        "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-        config = function(_, opts)
-          require("plugins.configs.others").luasnip(opts)
-        end,
-      },
-      {
-        "windwp/nvim-autopairs",
-        opts = {
-          fast_wrap = {},
-          disable_filetype = { "TelescopePrompt", "vim" },
-        },
-        config = function(_, opts)
-          require("nvim-autopairs").setup(opts)
-
-          -- setup cmp for autopairs
-          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
-      },
       {
         "zbirenbaum/copilot-cmp",
         "saadparwaiz1/cmp_luasnip",
@@ -87,24 +56,24 @@ local plugins = {
       "ChatGPTEditWithInstructions",
       "ChatGPTActAs",
       "ChatGPTCompleteCode",
-      "ChatGPTRun"
+      "ChatGPTRun",
     },
     config = function()
-      require("chatgpt").setup({
+      require("chatgpt").setup {
         api_key_cmd = "cat ~/.ssh/gpt3_api_key.txt",
         openai_params = {
-          model = "gpt-4"
+          model = "gpt-4",
         },
         openai_edit_params = {
-          model = "gpt-4"
+          model = "gpt-4",
         },
-      })
+      }
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-    }
+    },
   },
   {
     "piersolenski/wtf.nvim",
@@ -114,24 +83,23 @@ local plugins = {
     opts = {},
     event = "VeryLazy",
     config = function()
-      require("wtf").setup({
+      require("wtf").setup {
         hooks = {
-            request_started = function()
-                vim.cmd("hi StatusLine ctermbg=NONE ctermfg=yellow")
-            end,
-            request_finished = vim.schedule_wrap(function()
-                vim.cmd("hi StatusLine ctermbg=NONE ctermfg=NONE")
-            end),
+          request_started = function()
+            vim.cmd "hi StatusLine ctermbg=NONE ctermfg=yellow"
+          end,
+          request_finished = vim.schedule_wrap(function()
+            vim.cmd "hi StatusLine ctermbg=NONE ctermfg=NONE"
+          end),
         },
-      })
+      }
     end,
   },
   {
     "folke/trouble.nvim",
     event = "BufEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-    },
+    opts = {},
     config = function()
       require("trouble").setup()
     end,
@@ -140,8 +108,7 @@ local plugins = {
     "winston0410/range-highlight.nvim",
     event = "BufEnter",
     dependencies = { "winston0410/cmd-parser.nvim" },
-    opts = {
-    },
+    opts = {},
     config = function()
       require("range-highlight").setup()
     end,
@@ -152,9 +119,9 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
-    config = function ()
+    config = function()
       require("octo").setup()
     end,
   },
@@ -164,10 +131,10 @@ local plugins = {
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "tpope/vim-fugitive",
-      "tpope/vim-rhubarb"
+      "tpope/vim-rhubarb",
     },
     config = function()
-      require("telescope").load_extension("advanced_git_search")
+      require("telescope").load_extension "advanced_git_search"
     end,
   },
   {
@@ -175,29 +142,28 @@ local plugins = {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup({
+      require("copilot").setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
-      })
+      }
     end,
   },
   {
     "zbirenbaum/copilot-cmp",
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
     end,
   },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-    },
+    opts = {},
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
     },
     config = function()
-      require("noice").setup({
+      require("noice").setup {
         lsp = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -205,10 +171,10 @@ local plugins = {
             ["cmp.entry.get_documentation"] = true,
           },
           hover = {
-            enabled = false
+            enabled = false,
           },
           signature = {
-            enabled = false
+            enabled = false,
           },
         },
         presets = {
@@ -218,7 +184,7 @@ local plugins = {
           inc_rename = false,
           lsp_doc_border = true,
         },
-      })
+      }
     end,
   },
   {
@@ -242,10 +208,9 @@ local plugins = {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
-    opts = {
-    },
+    opts = {},
     config = function()
-      require ("todo-comments").setup()
+      require("todo-comments").setup()
     end,
   },
 }
