@@ -32,6 +32,7 @@ M.mason = {
     "pyright",
     "terraform-ls",
     "tflint",
+    "typescript-language-server",
   },
 }
 

@@ -5,14 +5,17 @@ local lspconfig = require "lspconfig"
 
 local servers = {
   "lua_ls",
+  "bashls",
   "clangd",
   "dockerls",
   "docker_compose_language_service",
   "gopls",
   "jsonls",
   "pyright",
+  "sqls",
   "terraformls",
   "tflint",
+  "tsserver",
 }
 
 for _, lsp in ipairs(servers) do
