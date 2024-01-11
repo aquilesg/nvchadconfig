@@ -4,10 +4,6 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    -- Chat GPT command
-    ["<leader><leader>c"] = {"<cmd> ChatGPT <CR>", "ChatGPT", opts = { nowait = true}},
-    ["<leader><leader>a"] = {"<cmd> ChatGPTActAs <CR>", "ChatGPTActAs", opts = { nowait = true}},
-    ["<leader><leader>e"] = {"<cmd> ChatGPTEditWithInstructions <CR>", "ChatGPTEdit", opts = { nowait = true}},
     -- Octo Mappings
     ["<leader><leader>a"] = {"<cmd> Octo actions <CR>", "gh actions", opts = { nowait = true}},
 

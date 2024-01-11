@@ -41,60 +41,32 @@ local plugins = {
     opts = overrides.cmp,
   },
 
-  -- Custom plugins
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-  {
-    "jackMort/ChatGPT.nvim",
-    cmd = {
-      "ChatGPT",
-      "ChatGPTEditWithInstructions",
-      "ChatGPTActAs",
-      "ChatGPTCompleteCode",
-      "ChatGPTRun",
-    },
-    config = function()
-      require("chatgpt").setup {
-        api_key_cmd = "cat ~/.ssh/gpt3_api_key.txt",
-        openai_params = {
-          model = "gpt-4",
-        },
-        openai_edit_params = {
-          model = "gpt-4",
-        },
-      }
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
+  -- Diagnostic stuff
   {
     "piersolenski/wtf.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
     opts = {},
-    event = "VeryLazy",
-    config = function()
-      require("wtf").setup {
-        hooks = {
-          request_started = function()
-            vim.cmd "hi StatusLine ctermbg=NONE ctermfg=yellow"
-          end,
-          request_finished = vim.schedule_wrap(function()
-            vim.cmd "hi StatusLine ctermbg=NONE ctermfg=NONE"
-          end),
-        },
-      }
-    end,
-  },
+    keys = {
+      {
+        "gw",
+        mode = { "n", "x" },
+        function()
+          require("wtf").ai()
+        end,
+        desc = "Debug diagnostic with AI",
+      },
+      {
+        mode = { "n" },
+        "gW",
+        function()
+          require("wtf").search()
+        end,
+        desc = "Search diagnostic with Google",
+      },
+    },
+  }
   {
     "folke/trouble.nvim",
     event = "BufEnter",
@@ -123,18 +95,6 @@ local plugins = {
     },
     config = function()
       require("octo").setup()
-    end,
-  },
-  {
-    "aaronhallaert/advanced-git-search.nvim",
-    cmd = "AdvancedGitSearch",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "tpope/vim-fugitive",
-      "tpope/vim-rhubarb",
-    },
-    config = function()
-      require("telescope").load_extension "advanced_git_search"
     end,
   },
   {
@@ -188,20 +148,16 @@ local plugins = {
     end,
   },
   {
-    "lukas-reineke/headlines.nvim",
-    event = "BufRead",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("headlines").setup()
-    end,
-  },
-  {
     "gelguy/wilder.nvim",
     event = "VeryLazy",
     config = function()
-      require("wilder").setup()
+      require("wilder").setup({
+        modes = {
+          "/",
+          "?",
+          ":",
+        },
+      })
     end,
   },
   {
@@ -213,6 +169,31 @@ local plugins = {
       require("todo-comments").setup()
     end,
   },
+  {
+    "folke/neodev.nvim",
+    opts = {}
+  },
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {},
+          ["core.concealer"] = {},
+          ["core.dirman"] = {
+            config = {
+              workspaces = {
+                notes = "~/notes",
+              },
+              default_workspace = "notes",
+            },
+          },
+        },
+      }
+    end,
+  }
 }
 
 return plugins
