@@ -59,6 +59,13 @@ local plugins = {
       require("range-highlight").setup()
     end,
   },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    opts = {
+    },
+  },
   -- Git control
   {
     "kdheepak/lazygit.nvim",
@@ -66,6 +73,10 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+  {
+    "tpope/vim-fugitive",
+    cmd = "Git"
   },
   {
     "pwntester/octo.nvim",
@@ -79,6 +90,7 @@ local plugins = {
       require("octo").setup()
     end,
   },
+  -- AI
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -96,6 +108,7 @@ local plugins = {
       require("copilot_cmp").setup()
     end,
   },
+  -- Commands
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -155,6 +168,7 @@ local plugins = {
     "folke/neodev.nvim",
     opts = {}
   },
+  -- Database stuff
   {
     "tpope/vim-dadbod",
     opts = {},
@@ -175,13 +189,6 @@ local plugins = {
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
-  },
-  {
-    "hedyhli/outline.nvim",
-    lazy = true,
-    cmd = { "Outline", "OutlineOpen" },
-    opts = {
-    },
   },
 }
 
