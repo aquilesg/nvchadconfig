@@ -7,8 +7,8 @@ M.general = {
     -- Octo Mappings
     ["<leader><leader>a"] = { "<cmd> Octo actions <CR>", "gh actions", opts = { nowait = true } },
 
-    -- Advanced gitsearch
-    ["<leader>a"] = { "<cmd> AdvancedGitSearch <CR>", "AdvancedGitSearch", opts = { nowait = true } },
+    -- Lazy Git
+    ["<leader>lg"] = { "<cmd> LazyGit <CR>", "LazyGit", opts = { nowait = true } },
 
     -- Allow Override the telescope to show hidden files
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true } },
