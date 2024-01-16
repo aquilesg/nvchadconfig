@@ -60,20 +60,15 @@ local plugins = {
     end,
   },
   {
-    "hedyhli/outline.nvim",
-    lazy = true,
-    cmd = { "Outline", "OutlineOpen" },
-    opts = {
+    "stevearc/aerial.nvim",
+    opts = {},
+    cmd = {"AerialToggle"},
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
     },
   },
   -- Git control
-  {
-    "kdheepak/lazygit.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
   {
     "tpope/vim-fugitive",
     cmd = "Git"
@@ -110,28 +105,10 @@ local plugins = {
   },
   -- Commands
   {
-    "folke/noice.nvim",
-    event = "VimEnter",
-    opts = {},
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = function()
-      require("custom.configs.noiceconfig")
-    end,
-  },
-  {
     "gelguy/wilder.nvim",
     event = "VeryLazy",
     config = function()
-      require("wilder").setup({
-        modes = {
-          "/",
-          "?",
-          ":",
-        },
-      })
+      require("custom.configs.wilder")
     end,
   },
   {

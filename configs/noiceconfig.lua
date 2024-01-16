@@ -21,7 +21,7 @@ require("noice").setup({
     { filter = { find = "indent" },       opts = { skip = true } },
     { filter = { find = "move" },         opts = { skip = true } },
   },
-  cmdline = { view = "cmdline" },
+  cmdline = { view = "cmdline_popup" },
   views = {
     popupmenu = {
       size = { width = 50, height = 10 },

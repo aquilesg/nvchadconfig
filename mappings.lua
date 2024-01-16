@@ -14,7 +14,7 @@ M.general = {
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true } },
 
     -- Symbol outlines
-    ["<leader>o"] = { "<cmd> Outline <CR>", opts = { nowait = true } },
+    ["<leader>a"] = { "<cmd> AerialToggle! <CR>", opts = { nowait = true } },
   },
   v = {
     [">"] = { ">gv", "indent" },
