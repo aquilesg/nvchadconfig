@@ -39,7 +39,6 @@ local plugins = {
     },
     opts = overrides.cmp,
   },
-
   -- Diagnostic stuff
   {
     "folke/trouble.nvim",
@@ -88,14 +87,13 @@ local plugins = {
     end,
   },
   {
-    "NeogitOrg/neogit",
-    cmd = "Neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = true
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+      "DiffviewRefresh",
+      "DiffviewFileHistory" },
   },
   -- AI
   {
