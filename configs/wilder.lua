@@ -11,14 +11,13 @@ wilder.setup({
 
 local highlighters = {
   wilder.pcre2_highlighter(),
-  wilder.lua_fzy_highlighter(),
 }
 
 wilder.set_option("renderer",
   wilder.popupmenu_renderer(
     wilder.popupmenu_palette_theme(
       {
-        border = 'double',
+        border = 'rounded',
         max_height = '25%',
         min_height = 0,
         prompt_position = 'top',

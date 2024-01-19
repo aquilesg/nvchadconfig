@@ -60,13 +60,15 @@ local plugins = {
     end,
   },
   {
-    "stevearc/aerial.nvim",
-    opts = {},
-    cmd = {"AerialToggle"},
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
+    config = function()
+      require("lspsaga").setup({})
+    end,
   },
   -- Git control
   {
@@ -84,6 +86,16 @@ local plugins = {
     config = function()
       require("octo").setup()
     end,
+  },
+  {
+    "NeogitOrg/neogit",
+    cmd = "Neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = true
   },
   -- AI
   {
@@ -123,6 +135,20 @@ local plugins = {
   {
     "folke/neodev.nvim",
     opts = {}
+  },
+  -- TODO: Need to configure this crap
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInsructions", "ChatGPTRun" },
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
   },
   -- Database stuff
   {
