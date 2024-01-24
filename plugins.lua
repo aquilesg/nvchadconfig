@@ -61,6 +61,9 @@ local plugins = {
   {
     "nvimdev/lspsaga.nvim",
     event = "LspAttach",
+    cmd = {
+      "Lspsaga"
+    },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
@@ -83,23 +86,25 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("octo").setup()
+      require("custom.configs.octo")
     end,
   },
   {
     "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen",
+    cmd = {
+      "DiffviewOpen",
       "DiffviewClose",
       "DiffviewToggleFiles",
       "DiffviewFocusFiles",
       "DiffviewRefresh",
-      "DiffviewFileHistory" },
+      "DiffviewFileHistory"
+    },
   },
   -- AI
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
+    event = "BufEnter",
     config = function()
       require("copilot").setup {
         suggestion = { enabled = false },
@@ -115,10 +120,17 @@ local plugins = {
   },
   -- Commands
   {
-    "gelguy/wilder.nvim",
+    "folke/noice.nvim",
     event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
     config = function()
-      require("custom.configs.wilder")
+      require("custom.configs.noice")
     end,
   },
   {
@@ -134,41 +146,18 @@ local plugins = {
     "folke/neodev.nvim",
     opts = {}
   },
-  -- TODO: Need to configure this crap
   {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    cmd = { "ChatGPT", "ChatGPTActAs", "ChatGPTEditWithInsructions", "ChatGPTRun" },
+    "robitx/gp.nvim",
+    cmd = { "GpChatToggle", "GpChatNew", "GpChatRespond", "GpChatFinder" },
     config = function()
-      require("chatgpt").setup()
+      require("gp").setup()
     end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
-  -- Database stuff
-  {
-    "tpope/vim-dadbod",
-    opts = {},
   },
   {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
+    "mgierada/lazydocker.nvim",
+    dependencies = { "akinsho/toggleterm.nvim" },
+    config = function() require("lazydocker").setup {} end,
+    cmd = "Lazydocker",
   },
 }
 

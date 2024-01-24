@@ -53,12 +53,12 @@ M.nvimtree = {
 
 M.cmp = {
   sources = {
-    { name = "copilot" },
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "path" },
+    { name = "copilot",  group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "luasnip",  group_index = 2 },
+    { name = "buffer",   group_index = 2 },
+    { name = "nvim_lua", group_index = 2 },
+    { name = "path",     group_index = 2 },
   },
 }
 

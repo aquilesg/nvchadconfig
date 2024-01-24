@@ -4,11 +4,9 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    -- Octo Mappings
-    ["<leader><leader>a"] = { "<cmd> Octo actions <CR>", "gh actions", opts = { nowait = true } },
-
-    -- Lazy Git
-    ["<leader>lg"] = { "<cmd> LazyGit <CR>", "LazyGit", opts = { nowait = true } },
+    ["<leader>v"] = { "<cmd> GpChatToggle vsplit <CR>", "Open chat vsplit", opts = { nowait = true } },
+    ["<leader>h"] = { "<cmd> GpChatToggle split <CR>", "Open chat hsplit", opts = { nowait = true } },
+    ["<leader>1"] = { "<cmd> GpChatRespond <CR>", "Respond to chat", opts = { nowait = true } },
 
     -- Allow Override the telescope to show hidden files
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true } },
@@ -16,7 +14,12 @@ M.general = {
     -- Symbol outlines
     ["<leader>o"] = { "<cmd> Lspsaga outline <CR>", "Open Outline", opts = { nowait = true } },
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
-
+    -- Term toggle
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"}
+  },
+  t = {
+    -- Term toggle
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"}
   },
   v = {
     [">"] = { ">gv", "indent" },
