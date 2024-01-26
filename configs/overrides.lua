@@ -40,7 +40,9 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
+  filters = {
+    git_ignored = false,
+  },
   renderer = {
     highlight_git = true,
     icons = {
@@ -53,13 +55,16 @@ M.nvimtree = {
 
 M.cmp = {
   sources = {
-    { name = "copilot",  group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "luasnip",  group_index = 2 },
-    { name = "buffer",   group_index = 2 },
+    { name = "copilot",  group_index = 2,  priority = 75 },
+    { name = "nvim_lsp", group_index = 2,  priority = 100 },
+    { name = "buffer",   group_index = 2,  priority = 50 },
+    { name = "path",     group_index = 2,  priority = 50 },
     { name = "nvim_lua", group_index = 2 },
-    { name = "path",     group_index = 2 },
+    { name = "luasnip",  group_index = 2 },
   },
+  mapping = {
+    ["<CR>"] = nil
+  }
 }
 
 return M
