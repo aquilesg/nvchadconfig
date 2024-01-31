@@ -42,7 +42,9 @@ local plugins = {
   -- Diagnostic stuff
   {
     "folke/trouble.nvim",
-    event = "BufEnter",
+    cmd = {
+      "Trouble"
+    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
     config = function()
@@ -90,6 +92,15 @@ local plugins = {
     end,
   },
   {
+    "petertriho/cmp-git",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("cmp_git").setup()
+    end,
+  },
+  {
     "sindrets/diffview.nvim",
     cmd = {
       "DiffviewOpen",
@@ -116,6 +127,13 @@ local plugins = {
     "zbirenbaum/copilot-cmp",
     config = function()
       require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "robitx/gp.nvim",
+    cmd = { "GpChatToggle", "GpChatNew", "GpChatRespond", "GpChatFinder" },
+    config = function()
+      require("gp").setup()
     end,
   },
   -- Commands
@@ -147,17 +165,33 @@ local plugins = {
     opts = {}
   },
   {
-    "robitx/gp.nvim",
-    cmd = { "GpChatToggle", "GpChatNew", "GpChatRespond", "GpChatFinder" },
-    config = function()
-      require("gp").setup()
-    end,
-  },
-  {
     "mgierada/lazydocker.nvim",
     dependencies = { "akinsho/toggleterm.nvim" },
-    config = function() require("lazydocker").setup {} end,
+    config = function()
+      require("lazydocker").setup {}
+    end,
     cmd = "Lazydocker",
+  },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    ft = "markdown",
+    cmd = {
+      "ObsidianOpen",
+      "ObsidianNew",
+      "ObsidianQuickSwitch",
+      "ObsidianToday",
+      "ObsidianYesterday",
+      "ObsidianTomorrow",
+      "ObsidianTemplate",
+      "ObsidianSearch",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("custom.configs.obsidian")
+    end,
   },
 }
 

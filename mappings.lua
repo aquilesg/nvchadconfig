@@ -12,10 +12,21 @@ M.general = {
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true } },
 
     -- Symbol outlines
-    ["<leader>o"] = { "<cmd> Lspsaga outline <CR>", "Open Outline", opts = { nowait = true } },
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
+    
     -- Term toggle
-    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"}
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"},
+
+    -- Obsidian Commands
+    ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
+    ["<leader>ow"] = { "<cmd> ObsidianTomorrow <CR>", "Open tomorrows's note", opts = { nowait = true } },
+    ["<leader>oy"] = { "<cmd> ObsidianYesterday <CR>", "Open yesterday's note", opts = { nowait = true } },
+    ["<leader>on"] = { "<cmd> ObsidianNew <CR>", "Create new Obsidian note", opts = { nowait = true } },
+    ["<leader>os"] = { "<cmd> ObsidianSearch <CR>", "Search for note", opts = { nowait = true } },
+    ["<leader>oq"] = { "<cmd> ObsidianQuickSwitch <CR>", "Switch to different Note", opts = { nowait = true } },
+    ["<leader>or"] = { "<cmd> ObsidianTemplate <CR>", "Open template note", opts = { nowait = true } },
+
+    ["<C-c>"] = nil,
   },
   t = {
     -- Term toggle
