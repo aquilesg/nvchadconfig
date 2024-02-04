@@ -1,8 +1,7 @@
 require("lspsaga").setup({
-  diagnostic = {}
+  diagnostic = {
     diagnostic_only_current = true,
   },
-
 })
 
 -- Disable vim diagnostic text
