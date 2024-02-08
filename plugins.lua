@@ -26,6 +26,10 @@ local plugins = {
     opts = overrides.nvimtree,
   },
   {
+    "nvim-telescope/telescope.nvim",
+    opts = overrides.telescope,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       {
@@ -76,10 +80,6 @@ local plugins = {
   },
   -- Git control
   {
-    "tpope/vim-fugitive",
-    cmd = "Git"
-  },
-  {
     "pwntester/octo.nvim",
     cmd = "Octo",
     dependencies = {
@@ -92,15 +92,6 @@ local plugins = {
     end,
   },
   {
-    "petertriho/cmp-git",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("cmp_git").setup()
-    end,
-  },
-  {
     "sindrets/diffview.nvim",
     cmd = {
       "DiffviewOpen",
@@ -110,6 +101,19 @@ local plugins = {
       "DiffviewRefresh",
       "DiffviewFileHistory"
     },
+  },
+  {
+    "f-person/git-blame.nvim",
+    cmd = {
+      "GitBlameOpenCommitURL",
+      "GitBlameToggle",
+      "GitBlameEnable",
+      "GitBlameDisable",
+      "GitBlameCopySHA",
+      "GitBlameCopyCommitURL",
+      "GitBlameOpenFileURL",
+      "GitBlameCopyFileURL",
+    }
   },
   -- AI
   {
@@ -137,6 +141,9 @@ local plugins = {
     end,
   },
   -- Commands
+  {
+    "hrsh7th/nvim-cmp",
+  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",

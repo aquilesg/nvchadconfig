@@ -6,3 +6,6 @@ vim.cmd([[autocmd BufRead,BufNewFile *.tfstate,*.tfstate.backup set filetype=jso
 
 -- Obsidian Conceal level
 vim.opt.conceallevel = 2
+
+-- Set no wrap by default; i hate that thing
+vim.opt.wrap = false

@@ -6,7 +6,6 @@ require("obsidian").setup({
       overrides = {
         daily_notes = {
           folder = "DailyNotes",
-          template = "DailyNote.md"
         },
         templates = {
           subdir = "Templates",

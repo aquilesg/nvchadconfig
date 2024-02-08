@@ -13,7 +13,8 @@ local servers = {
   "gopls",
   "jsonls",
   "pyright",
-  "sqls",
+  "ruby_ls",
+  "sqlls",
   "terraformls",
   "tflint",
   "tsserver",
@@ -44,4 +45,12 @@ lspconfig.pyright.setup {
       },
     },
   },
+}
+
+lspconfig.sqlls.setup {
+  capabilities = capabilities,
+  filetypes = { 'sql' },
+  root_dir = function(_)
+    return vim.loop.cwd()
+  end,
 }
