@@ -33,15 +33,14 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     dependencies = {
       {
-        "zbirenbaum/copilot-cmp",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
       },
     },
     opts = overrides.cmp,
+    lazy = false,
   },
   -- Diagnostic stuff
   {
@@ -117,21 +116,16 @@ local plugins = {
   },
   -- AI
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "BufEnter",
+    'Exafunction/codeium.vim',
+    event = "LspAttach",
     config = function()
-      require("copilot").setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
+      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end,
+        { expr = true, silent = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
+        { expr = true, silent = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    end
   },
   {
     "robitx/gp.nvim",
@@ -141,9 +135,6 @@ local plugins = {
     end,
   },
   -- Commands
-  {
-    "hrsh7th/nvim-cmp",
-  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",

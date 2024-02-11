@@ -44,7 +44,7 @@ M.mason = {
     "gopls",
     "json-lsp",
     "pyright",
-    "ruby-ls",
+    "ruby-lsp",
     "shellcheck",
     "terraform-ls",
     "tflint",
@@ -70,40 +70,35 @@ M.nvimtree = {
   },
 }
 
-local cmp = require("cmp")
+local cmp_ok, cmp = pcall(require, "cmp")
 
-M.cmp = {
-  sources = {
-    { name = "copilot",  group_index = 2, priority = 75 },
-    { name = "nvim_lsp", group_index = 2, priority = 100 },
-    { name = "buffer",   group_index = 2, priority = 50 },
-    { name = "path",     group_index = 2, priority = 50 },
-    { name = "nvim_lua", group_index = 2, priority = 50 },
-    { name = "luasnip",  group_index = 2, priority = 50 },
-    { name = "git",      group_index = 2, priority = 50 }
-  },
-  mapping = {
-    ["<C-y>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+if cmp_ok then
+  M.cmp = {
+    sources = {
+      { name = "copilot",  group_index = 2, priority = 75 },
+      { name = "nvim_lsp", group_index = 2, priority = 100 },
+      { name = "buffer",   group_index = 2, priority = 50 },
+      { name = "path",     group_index = 2, priority = 50 },
+      { name = "nvim_lua", group_index = 2, priority = 50 },
+      { name = "luasnip",  group_index = 2, priority = 50 },
+      { name = "git",      group_index = 2, priority = 50 }
     },
-    ["<CR>"] = cmp.config.disable,
-  },
-  preselect = cmp.PreselectMode.None,
-}
-
-cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
-  source = {
-    { name = 'buffer' },
+    mapping = {
+      ["<C-y>"] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = true,
+      },
+      ["<CR>"] = cmp.config.disable,
+    },
+    preselect = cmp.PreselectMode.None,
   }
-})
 
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'cmdline' },
-    { name = 'path' },
-  }),
-})
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+    }
+  })
+end
 
 return M
