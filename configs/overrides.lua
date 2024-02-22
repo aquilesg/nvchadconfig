@@ -2,15 +2,18 @@ local M = {}
 
 M.treesitter = {
   ensure_installed = {
+    "bash",
     "c",
     "cpp",
     "dockerfile",
+    "go",
     "hcl",
     "json",
     "lua",
     "markdown",
     "markdown_inline",
     "terraform",
+    "sql",
     "vim",
     "vimdoc",
     "yaml",
@@ -48,6 +51,7 @@ M.mason = {
     "shellcheck",
     "terraform-ls",
     "tflint",
+    "sqlls",
     "typescript-language-server",
     "write-good"
   },
@@ -98,6 +102,19 @@ if cmp_ok then
     sources = {
       { name = 'buffer' },
     }
+  })
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      {
+        name = 'cmdline',
+        option = {
+          ignore_cmds = { 'Man', '!' }
+        }
+      }
+    })
   })
 end
 

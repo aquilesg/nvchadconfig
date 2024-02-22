@@ -13,9 +13,9 @@ M.general = {
 
     -- Symbol outlines
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
-    
+
     -- Term toggle
-    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"},
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" },
 
     -- Obsidian Commands
     ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
@@ -26,11 +26,18 @@ M.general = {
     ["<leader>oq"] = { "<cmd> ObsidianQuickSwitch <CR>", "Switch to different Note", opts = { nowait = true } },
     ["<leader>or"] = { "<cmd> ObsidianTemplate <CR>", "Open template note", opts = { nowait = true } },
 
+    -- Enable git blame in line
+    ["<leader>ge"] = { "<cmd> GitBlameToggle <CR>", "Toggle git blame", opts = { nowait = true } },
+    -- Diff View Open
+    ["<leader>dv"] = { "<cmd> DiffviewOpen <CR>", "Open DiffView", opts = { nowait = true } },
+    -- LazyGit
+    ["<leader>gl"] = { "<cmd> LazyGit <CR>", "Open LazyGit", opts = { nowait = true } },
+
     ["<C-c>"] = nil,
   },
   t = {
     -- Term toggle
-    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal"}
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" }
   },
   v = {
     [">"] = { ">gv", "indent" },

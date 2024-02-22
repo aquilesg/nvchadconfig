@@ -31,6 +31,7 @@ local plugins = {
   },
   {
     "hrsh7th/nvim-cmp",
+    event = "VeryLazy",
     dependencies = {
       {
         "hrsh7th/cmp-nvim-lsp",
@@ -40,7 +41,6 @@ local plugins = {
       },
     },
     opts = overrides.cmp,
-    lazy = false,
   },
   -- Diagnostic stuff
   {
@@ -114,10 +114,17 @@ local plugins = {
       "GitBlameCopyFileURL",
     }
   },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = "LazyGit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
   -- AI
   {
     'Exafunction/codeium.vim',
-    event = "LspAttach",
+    event = "VeryLazy",
     config = function()
       vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end,
