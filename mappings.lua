@@ -3,9 +3,8 @@ local M = {}
 
 M.general = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["<leader>v"] = { "<cmd> GpChatToggle vsplit <CR>", "Open chat vsplit", opts = { nowait = true } },
-    ["<leader>h"] = { "<cmd> GpChatToggle split <CR>", "Open chat hsplit", opts = { nowait = true } },
+    ["<leader>v"] = { "<cmd> GpChatNew vsplit <CR>", "Open chat vsplit", opts = { nowait = true } },
+    ["<leader>h"] = { "<cmd> GpChatNew split <CR>", "Open chat hsplit", opts = { nowait = true } },
     ["<leader>1"] = { "<cmd> GpChatRespond <CR>", "Respond to chat", opts = { nowait = true } },
 
     -- Allow Override the telescope to show hidden files
