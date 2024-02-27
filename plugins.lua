@@ -15,12 +15,10 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = overrides.mason,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
   },
-
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
@@ -126,7 +124,7 @@ local plugins = {
   {
     'Exafunction/codeium.nvim',
     event = "VeryLazy",
-    config = function ()
+    config = function()
       require("codeium").setup({})
     end,
   },
@@ -142,7 +140,6 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
@@ -164,6 +161,13 @@ local plugins = {
   {
     "folke/neodev.nvim",
     opts = {}
+  },
+  {
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    config = function()
+      require("neoscroll").setup()
+    end,
   },
   {
     "mgierada/lazydocker.nvim",
