@@ -33,6 +33,9 @@ M.telescope = {
         return { "--hidden" }
       end,
     },
+  },
+  extensions_list = {
+    "workspaces"
   }
 }
 

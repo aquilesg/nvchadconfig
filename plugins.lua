@@ -9,7 +9,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
-
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -113,12 +112,21 @@ local plugins = {
       "GitBlameCopyFileURL",
     }
   },
+  -- Lazy tools
   {
     "kdheepak/lazygit.nvim",
     cmd = "LazyGit",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+  {
+    "mgierada/lazydocker.nvim",
+    dependencies = { "akinsho/toggleterm.nvim" },
+    config = function()
+      require("lazydocker").setup {}
+    end,
+    cmd = "Lazydocker",
   },
   -- AI
   {
@@ -164,19 +172,12 @@ local plugins = {
   },
   {
     "karb94/neoscroll.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("neoscroll").setup()
     end,
   },
-  {
-    "mgierada/lazydocker.nvim",
-    dependencies = { "akinsho/toggleterm.nvim" },
-    config = function()
-      require("lazydocker").setup {}
-    end,
-    cmd = "Lazydocker",
-  },
+  -- Workspaces and session management
   {
     "epwalsh/obsidian.nvim",
     version = "*",
@@ -198,6 +199,33 @@ local plugins = {
       require("custom.configs.obsidian")
     end,
   },
+  {
+    "natecraddock/workspaces.nvim",
+    cmd = {
+      "WorkspacesOpen",
+      "WorkspacesAdd",
+      "WorkspacesList",
+      "WorkspacesDelete",
+      "WorkspacesOpenWorkspace"
+    },
+    config = function()
+      require("custom.configs.workspaces")
+    end,
+  },
+  {
+    "natecraddock/sessions.nvim",
+    cmd = {
+      "SessionsSave",
+      "SessionsLoad",
+      "SessionsStop",
+    },
+    config = function()
+      require("sessions").setup({
+        events = { "WinEnter" },
+        session_filepath = vim.fn.stdpath("data") .. "/sessions",
+        absolute = true,
+      })
+    end,
+  },
 }
-
 return plugins

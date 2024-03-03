@@ -3,18 +3,17 @@ local M = {}
 
 M.general = {
   n = {
-    ["<leader>v"] = { "<cmd> GpChatNew vsplit <CR>", "Open chat vsplit", opts = { nowait = true } },
-    ["<leader>h"] = { "<cmd> GpChatNew split <CR>", "Open chat hsplit", opts = { nowait = true } },
+    ["<leader>n"] = { "<cmd> GpChatNew <CR>", "New GPT chat", opts = { nowait = true } },
     ["<leader>1"] = { "<cmd> GpChatRespond <CR>", "Respond to chat", opts = { nowait = true } },
 
     -- Allow Override the telescope to show hidden files
-    ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", opts = { nowait = true } },
+    ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", "File search", opts = { nowait = true } },
 
     -- Symbol outlines
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
 
     -- Term toggle
-    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" },
+    ["<A-i>"] = { "<cmd> terminal <CR>", "Open terminal" },
 
     -- Obsidian Commands
     ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
@@ -31,6 +30,8 @@ M.general = {
     ["<leader>dv"] = { "<cmd> DiffviewOpen <CR>", "Open DiffView", opts = { nowait = true } },
     -- LazyGit
     ["<leader>gl"] = { "<cmd> LazyGit <CR>", "Open LazyGit", opts = { nowait = true } },
+    -- Workspace
+    ["<leader>wl"] = { "<cmd> Telescope workspaces <CR>", "List workspaces", opts = { nowait = true } },
 
     ["<C-c>"] = nil,
   },
@@ -55,7 +56,5 @@ M.lspconfig = {
     ["<leader>tw"] = { "<cmd> TroubleToggle workspace_diagnostics <CR>", "Toggle Trouble for wrkspc", opts = { nowait = true } }
   }
 }
-
--- more keybinds!
 
 return M
