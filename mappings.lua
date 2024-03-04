@@ -13,7 +13,7 @@ M.general = {
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
 
     -- Term toggle
-    ["<A-i>"] = { "<cmd> terminal <CR>", "Open terminal" },
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Open terminal" },
 
     -- Obsidian Commands
     ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
