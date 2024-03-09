@@ -1,7 +1,8 @@
 local overrides = require "custom.configs.overrides"
+local version   = require "mason.version"
 
 ---@type NvPluginSpec[]
-local plugins = {
+local plugins   = {
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -73,6 +74,14 @@ local plugins = {
     },
     config = function()
       require("lspsaga").setup({})
+    end,
+  },
+  {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    config = function()
+      require("garbage-day").setup({})
     end,
   },
   -- Git control
@@ -220,11 +229,23 @@ local plugins = {
       "SessionsStop",
     },
     config = function()
-      require("sessions").setup({
-        events = { "WinEnter" },
-        session_filepath = vim.fn.stdpath("data") .. "/sessions",
-        absolute = true,
-      })
+      require("custom.configs.sessions")
+    end,
+  },
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod' },
+      { 'kristijanhusak/vim-dadbod-completion' },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
 }

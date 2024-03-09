@@ -6,6 +6,9 @@ require("workspaces").setup({
     },
     open = function()
       require("sessions").load(nil, { silent = true })
+      require("nvim-tree.api").tree.open()
+      vim.api.nvim_command('windo wincmd =')
     end,
-  }
+  },
+  cd_type = "global",
 })

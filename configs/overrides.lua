@@ -88,7 +88,6 @@ if cmp_ok then
       { name = "path",     group_index = 2, priority = 50 },
       { name = "nvim_lua", group_index = 2, priority = 50 },
       { name = "luasnip",  group_index = 2, priority = 50 },
-      { name = "git",      group_index = 2, priority = 50 }
     },
     mapping = {
       ["<C-y>"] = cmp.mapping.confirm {

@@ -32,6 +32,15 @@ M.general = {
     ["<leader>gl"] = { "<cmd> LazyGit <CR>", "Open LazyGit", opts = { nowait = true } },
     -- Workspace
     ["<leader>wl"] = { "<cmd> Telescope workspaces <CR>", "List workspaces", opts = { nowait = true } },
+    ["<leader>ss"] = { "<cmd> SessionsSave <CR>", "Save current Session", opts = { nowait = true } },
+    -- Database stuff
+    ["<leader>db"] = {
+      function()
+        require("dbee").toggle()
+      end,
+      "Save current Session",
+      opts = { nowait = true }
+    },
 
     ["<C-c>"] = nil,
   },
