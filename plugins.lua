@@ -233,19 +233,12 @@ local plugins   = {
     end,
   },
   {
-    'kristijanhusak/vim-dadbod-ui',
+    "kndndrj/nvim-dbee",
     dependencies = {
-      { 'tpope/vim-dadbod' },
-      { 'kristijanhusak/vim-dadbod-completion' },
+      "MunifTanjim/nui.nvim",
     },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      vim.g.db_ui_use_nerd_fonts = 1
+    config = function()
+      require("dbee").setup()
     end,
   },
 }
