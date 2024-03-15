@@ -5,6 +5,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 local servers = {
+  "arduino_language_server",
   "ansiblels",
   "lua_ls",
   "bashls",

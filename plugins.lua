@@ -45,10 +45,11 @@ local plugins   = {
   {
     "folke/trouble.nvim",
     cmd = {
-      "Trouble"
+      "Trouble",
+      "TroubleToggle",
+      "TroubleRefresh",
     },
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
     config = function()
       require("trouble").setup()
     end,
@@ -57,7 +58,6 @@ local plugins   = {
     "winston0410/range-highlight.nvim",
     event = "BufEnter",
     dependencies = { "winston0410/cmd-parser.nvim" },
-    opts = {},
     config = function()
       require("range-highlight").setup()
     end,
@@ -79,9 +79,13 @@ local plugins   = {
   {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
+    event = "LspAttach",
     config = function()
-      require("garbage-day").setup({})
+      require("garbage-day").setup({
+        excluded_lsp_clients = {
+          "gopls",
+        }
+      })
     end,
   },
   -- Git control
@@ -147,7 +151,12 @@ local plugins   = {
   },
   {
     "robitx/gp.nvim",
-    cmd = { "GpChatToggle", "GpChatNew", "GpChatRespond", "GpChatFinder" },
+    cmd = {
+      "GpChatToggle",
+      "GpChatNew",
+      "GpChatRespond",
+      "GpChatFinder"
+    },
     config = function()
       require("gp").setup()
     end,
@@ -170,14 +179,23 @@ local plugins   = {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
-    opts = {},
     config = function()
       require("todo-comments").setup()
     end,
   },
   {
     "folke/neodev.nvim",
-    opts = {}
+    config = function()
+      require("neodev").setup({
+        library = {
+          plugins = {
+            "neotest",
+            "nvim-dap-ui",
+          },
+          types = true
+        },
+      })
+    end
   },
   {
     "karb94/neoscroll.nvim",
@@ -189,7 +207,6 @@ local plugins   = {
   -- Workspaces and session management
   {
     "epwalsh/obsidian.nvim",
-    version = "*",
     ft = "markdown",
     cmd = {
       "ObsidianOpen",
@@ -234,6 +251,9 @@ local plugins   = {
   },
   {
     "kndndrj/nvim-dbee",
+    cmd = {
+      "Dbee"
+    },
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
@@ -241,5 +261,35 @@ local plugins   = {
       require("dbee").setup()
     end,
   },
+  -- Testing and debugging
+  {
+    "nvim-neotest/neotest",
+    cmd = {
+      "Neotest"
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-go",
+      "alfaix/neotest-gtest",
+    },
+    config = function()
+      require("custom.configs.neotest")
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
+    },
+    config = function()
+      require("dapui").setup()
+      require("custom.configs.nvim-dap")
+    end,
+  }
 }
 return plugins

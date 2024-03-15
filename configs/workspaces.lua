@@ -6,7 +6,7 @@ require("workspaces").setup({
     },
     open = function()
       require("sessions").load(nil, { silent = true })
-      require("nvim-tree.api").tree.open()
+      require("nvim-tree.api").tree.close()
       vim.api.nvim_command('windo wincmd =')
     end,
   },

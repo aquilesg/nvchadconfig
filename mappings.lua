@@ -33,23 +33,82 @@ M.general = {
     -- Workspace
     ["<leader>wl"] = { "<cmd> Telescope workspaces <CR>", "List workspaces", opts = { nowait = true } },
     ["<leader>ss"] = { "<cmd> SessionsSave <CR>", "Save current Session", opts = { nowait = true } },
+    ["<leader>jj"] = { "<cmd> Noice dismiss <CR>", "Dismiss notification", opts = { nowait = true } },
     -- Database stuff
-    ["<leader>db"] = {
+    ["<leader>dq"] = {
       function()
         require("dbee").toggle()
       end,
-      "Save current Session",
+      "Open Database UI",
       opts = { nowait = true }
     },
 
-    ["<C-c>"] = nil,
+    ["<leader>tn"] = { "<cmd> Neotest summary <CR>", "Dismiss notification", opts = { nowait = true } },
+    -- Debugging
+    ["<leader>db"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "Open debugger",
+      opts = { nowait = true }
+    },
+    ["<leader>da"] = {
+      "<cmd> DapToggleBreakpoint <CR>",
+      "Toggle breakpoint",
+      opts = { nowait = true }
+    },
+    ["<leader>de"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "Eval under cursor",
+      opts = { nowait = true }
+    },
+    ["<leader>dc"] = {
+      "<cmd> DapContinue <CR>",
+      "Continue",
+      opts = { nowait = true }
+    },
+    ["<leader>dr"] = {
+      "<cmd> DapRestartFrame <CR>",
+      "Restart",
+      opts = { nowait = true }
+    },
+    ["<leader>dt"] = {
+      "<cmd> DapTerminate <CR>",
+      "Terminate Debugger",
+      opts = { nowait = true }
+    },
+    ["<leader>do"] = {
+      "<cmd> DapStepOver <CR>",
+      "Dap Step Over",
+      opts = { nowait = true }
+    },
+    ["<leader>dso"] = {
+      "<cmd> DapStepOver <CR>",
+      "Dap Step Out",
+      opts = { nowait = true }
+    },
+    ["<leader>dsi"] = {
+      "<cmd> DapStepInto <CR>",
+      "Dap Step Into",
+      opts = { nowait = true }
+    },
   },
+
   t = {
     -- Term toggle
     ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" }
   },
   v = {
     [">"] = { ">gv", "indent" },
+    ["<leader>de"] = {
+      function()
+        require("dapui").eval()
+      end,
+      "Eval under cursor",
+      opts = { nowait = true }
+    },
   },
 }
 
