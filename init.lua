@@ -11,3 +11,5 @@ vim.cmd([[autocmd BufRead,BufNewFile *.yaml.ansible set filetype=yaml.ansible]])
 
 -- Set no wrap by default; i hate that thing
 vim.opt.wrap = false
+
+vim.opt.conceallevel = 2

@@ -109,6 +109,10 @@ M.general = {
       "Eval under cursor",
       opts = { nowait = true }
     },
+    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
   },
 }
 
