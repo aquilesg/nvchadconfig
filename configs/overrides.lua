@@ -82,12 +82,12 @@ local cmp_ok, cmp = pcall(require, "cmp")
 if cmp_ok then
   M.cmp = {
     sources = {
-      { name = "codeium",  group_index = 2, priority = 75 },
-      { name = "nvim_lsp", group_index = 2, priority = 100 },
-      { name = "buffer",   group_index = 2, priority = 50 },
-      { name = "path",     group_index = 2, priority = 50 },
-      { name = "nvim_lua", group_index = 2, priority = 50 },
-      { name = "luasnip",  group_index = 2, priority = 50 },
+      { name = "codeium",  group_index = 2, priority = 100,  keyword_length = 0 },
+      { name = "nvim_lsp", group_index = 2, priority = 100, keyword_length = 2 },
+      { name = "buffer",   group_index = 2, priority = 80,  keyword_length = 2 },
+      { name = "path",     group_index = 2, priority = 50,  keyword_length = 2 },
+      { name = "nvim_lua", group_index = 2, priority = 50,  keyword_length = 2 },
+      { name = "luasnip",  group_index = 2, priority = 50,  keyword_length = 2 },
     },
     mapping = {
       ["<C-y>"] = cmp.mapping.confirm {
