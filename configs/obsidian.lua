@@ -6,9 +6,15 @@ require("obsidian").setup({
       overrides = {
         daily_notes = {
           folder = "DailyNotes",
+          template = "daily.md",
         },
         templates = {
           subdir = "Templates",
+          substitutions = {
+            pretty_date = function()
+              return os.date("%B %d, %Y")
+            end,
+          }
         },
       }
     },
