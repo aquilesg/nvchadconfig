@@ -56,7 +56,7 @@ M.mason = {
     "tflint",
     "sqlls",
     "typescript-language-server",
-    "write-good"
+    "yaml-language-server",
   },
 }
 

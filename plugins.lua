@@ -250,6 +250,13 @@ local plugins   = {
     end,
   },
   {
+    "nvim-pack/nvim-spectre",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("spectre").setup()
+    end,
+  },
+  {
     "kndndrj/nvim-dbee",
     cmd = {
       "Dbee"
@@ -268,12 +275,12 @@ local plugins   = {
       "Neotest"
     },
     dependencies = {
+      "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-go",
-      "alfaix/neotest-gtest",
     },
     config = function()
       require("custom.configs.neotest")

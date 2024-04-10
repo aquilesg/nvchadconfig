@@ -14,12 +14,13 @@ local servers = {
   "docker_compose_language_service",
   "gopls",
   "jsonls",
-  "pyright",
+  "pylsp",
   "ruby_ls",
   "sqlls",
   "terraformls",
   "tflint",
   "tsserver",
+  "yamlls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -29,28 +30,22 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.pyright.setup {
+lspconfig.pylsp.setup {
   settings = {
-    pyright = {
-      autoImportCompletion = true,
-      verboseOutput = true,
-      reportUnusedImport = "information",
-      reportUnusedVariable = "information",
-      reportDuplicateImport = "error",
-    },
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        diagnosticMode = "openFilesOnly",
-        useLibraryCodeForTypes = true,
-        typeCheckingMode = "off",
-      },
-    },
-  },
+    pylsp = {
+      plugins = {
+        flake8 = {
+          enabled = true
+        },
+        pylint = {
+          enabled = true
+        }
+      }
+    }
+  }
 }
 
 lspconfig.sqlls.setup {
-  capabilities = capabilities,
   filetypes = { 'sql' },
   root_dir = function(_)
     return vim.loop.cwd()

@@ -4,10 +4,17 @@ local highlights = require "custom.highlights"
 
 M.ui = {
   theme = "doomchad",
-  theme_toggle = { "doomchad", "doomchad" },
+  cmp = {
+    style = "flat_dark",
+  },
+  theme = "everforest",
+  theme_toggle = { "everforest", "everforest_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
+  nvdash = {
+    load_on_startup = true,
+  },
   lsp_semantic_tokens = false,
 
   statusline = {
