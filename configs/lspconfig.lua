@@ -13,6 +13,7 @@ local servers = {
   "dockerls",
   "docker_compose_language_service",
   "gopls",
+  "graphql",
   "jsonls",
   "pylsp",
   "ruby_ls",
@@ -31,6 +32,8 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     pylsp = {
       plugins = {
@@ -46,6 +49,8 @@ lspconfig.pylsp.setup {
 }
 
 lspconfig.sqlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = { 'sql' },
   root_dir = function(_)
     return vim.loop.cwd()

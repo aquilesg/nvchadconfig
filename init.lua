@@ -13,3 +13,6 @@ vim.cmd([[autocmd BufRead,BufNewFile *.yaml.ansible set filetype=yaml.ansible]])
 vim.opt.wrap = false
 
 vim.opt.conceallevel = 2
+
+-- Hide commandline
+vim.opt.cmdheight = 0

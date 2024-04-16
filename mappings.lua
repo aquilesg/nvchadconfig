@@ -3,8 +3,9 @@ local M = {}
 
 M.general = {
   n = {
-    ["<leader>1"] = { "<cmd> GpChatNew <CR>", "New GPT chat", opts = { nowait = true } },
-    ["<leader>2"] = { "<cmd> GpChatRespond <CR>", "Respond to chat", opts = { nowait = true } },
+    ["<leader>n"] = { "<cmd> GpChatNew <CR>", "New GPT chat", opts = { nowait = true } },
+    ["<leader>1"] = { "<cmd> GpChatRespond <CR>", "Respond to chat", opts = { nowait = true } },
+    ["<leader>2"] = { "<cmd> GpChatToggle <CR>", "Toggle GPT chat", opts = { nowait = true } },
 
     -- Allow Override the telescope to show hidden files
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", "File search", opts = { nowait = true } },
@@ -118,16 +119,6 @@ M.general = {
       opts = { nowait = true }
     },
 
-    -- LSP Saga stuff
-    ["K"] = { "<cmd> Lspsaga hover_doc <CR>", "Hover doc", opts = { nowait = true } },
-    ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek definition", opts = { nowait = true } },
-    ["gr"] = { "<cmd> Lspsaga finder <CR>", "Toggle Trouble for refs", opts = { nowait = true } },
-    ["gd"] = { "<cmd> Lspsaga goto_definition <CR>", "Go to Def", opts = { nowait = true } },
-    ["<leader>D"] = { "<cmd> Lspsaga goto_type_definition <CR>", "Type Defs", opts = { nowait = true } },
-    ["<leader>tq"] = { "<cmd> TroubleToggle quickfix <CR>", "Toggle Trouble for fixes", opts = { nowait = true } },
-    ["<leader>q"] = { "<cmd> TroubleToggle document_diagnostics <CR>", "Toggle Trouble for doc", opts = { nowait = true } },
-    ["<leader>tw"] = { "<cmd> TroubleToggle workspace_diagnostics <CR>", "Toggle Trouble for wrkspc", opts = { nowait = true } },
-
     -- Spectre searching
     ["<leader>S"] = {
       function()
@@ -181,6 +172,7 @@ M.general = {
 }
 
 M.lspconfig = {
+  plugin = true,
   n = {
     ["K"] = { "<cmd> Lspsaga hover_doc <CR>", "Hover doc", opts = { nowait = true } },
     ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek definition", opts = { nowait = true } },
