@@ -51,7 +51,7 @@ M.mason = {
     "gopls",
     "graphql-language-service-cli",
     "json-lsp",
-    "pyright",
+    "python-lsp-server",
     "ruby-lsp",
     "shellcheck",
     "terraform-ls",

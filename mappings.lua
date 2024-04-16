@@ -15,16 +15,6 @@ M.general = {
 
     -- Term toggle
     ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Open terminal" },
-
-    -- Obsidian Commands
-    ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
-    ["<leader>ow"] = { "<cmd> ObsidianTomorrow <CR>", "Open tomorrows's note", opts = { nowait = true } },
-    ["<leader>oy"] = { "<cmd> ObsidianYesterday <CR>", "Open yesterday's note", opts = { nowait = true } },
-    ["<leader>on"] = { "<cmd> ObsidianNew <CR>", "Create new Obsidian note", opts = { nowait = true } },
-    ["<leader>os"] = { "<cmd> ObsidianSearch <CR>", "Search for note", opts = { nowait = true } },
-    ["<leader>oq"] = { "<cmd> ObsidianQuickSwitch <CR>", "Switch to different Note", opts = { nowait = true } },
-    ["<leader>or"] = { "<cmd> ObsidianTemplate <CR>", "Open template note", opts = { nowait = true } },
-
     -- Enable git blame in line
     ["<leader>ge"] = { "<cmd> GitBlameToggle <CR>", "Toggle git blame", opts = { nowait = true } },
     -- Diff View Open
@@ -44,36 +34,52 @@ M.general = {
       opts = { nowait = true }
     },
 
-    ["<leader>3s"] = { "<cmd> Neotest summary <CR>", "Neotest Sumary", opts = { nowait = true } },
-    ["<leader>3r"] = {
-      function()
-        require("neotest").run.run()
-      end,
-      "Run nearest test",
-      opts = { nowait = true }
-    },
-    ["<leader>3f"] = {
-      function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
-      "Run current file",
-      opts = { nowait = true }
-    },
-    ["<leader>3d"] = {
-      function()
-        require("neotest").run.run({ strategy = "dap" })
-      end,
-      "Debug nearest test",
-      opts = { nowait = true }
-    },
-    ["<leader>3a"] = {
-      function()
-        require("neotest").run.attach()
-      end,
-      "Attach to nearest test",
-      opts = { nowait = true }
-    },
-    -- Debugging
+    ["<leader>tn"] = { "<cmd> Neotest summary <CR>", "Dismiss notification", opts = { nowait = true } },
+  },
+
+  t = {
+    -- Term toggle
+    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" }
+  },
+
+  v = {
+    [">"] = { ">gv", "indent" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+  },
+}
+
+M.lspconfig = {
+  n = {
+    ["K"] = { "<cmd> Lspsaga hover_doc <CR>", "Hover doc", opts = { nowait = true } },
+    ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek definition", opts = { nowait = true } },
+    ["gr"] = { "<cmd> Lspsaga finder <CR>", "Toggle Trouble for refs", opts = { nowait = true } },
+    ["gd"] = { "<cmd> Lspsaga goto_definition <CR>", "Go to Def", opts = { nowait = true } },
+    ["<leader>D"] = { "<cmd> Lspsaga goto_type_definition <CR>", "Type Defs", opts = { nowait = true } },
+    ["<leader>tq"] = { "<cmd> TroubleToggle quickfix <CR>", "Toggle Trouble for fixes", opts = { nowait = true } },
+    ["<leader>q"] = { "<cmd> TroubleToggle document_diagnostics <CR>", "Toggle Trouble for doc", opts = { nowait = true } },
+    ["<leader>tw"] = { "<cmd> TroubleToggle workspace_diagnostics <CR>", "Toggle Trouble for wrkspc", opts = { nowait = true } }
+  }
+}
+
+M.obsidian = {
+  plugin = true,
+  n = {
+    ["<leader>ot"] = { "<cmd> ObsidianToday <CR>", "Open today's note", opts = { nowait = true } },
+    ["<leader>ow"] = { "<cmd> ObsidianTomorrow <CR>", "Open tomorrows's note", opts = { nowait = true } },
+    ["<leader>oy"] = { "<cmd> ObsidianYesterday <CR>", "Open yesterday's note", opts = { nowait = true } },
+    ["<leader>on"] = { "<cmd> ObsidianNew <CR>", "Create new Obsidian note", opts = { nowait = true } },
+    ["<leader>os"] = { "<cmd> ObsidianSearch <CR>", "Search for note", opts = { nowait = true } },
+    ["<leader>oq"] = { "<cmd> ObsidianQuickSwitch <CR>", "Switch to different Note", opts = { nowait = true } },
+    ["<leader>or"] = { "<cmd> ObsidianTemplate <CR>", "Open template note", opts = { nowait = true } },
+  },
+}
+
+M.dap = {
+  plugin = true,
+  n = {
     ["<leader>db"] = {
       function()
         require("dapui").toggle()
@@ -144,12 +150,7 @@ M.general = {
 
   },
 
-  t = {
-    -- Term toggle
-    ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Toggle floating terminal" }
-  },
   v = {
-    [">"] = { ">gv", "indent" },
     ["<leader>de"] = {
       function()
         require("dapui").eval()
@@ -157,31 +158,6 @@ M.general = {
       "Eval under cursor",
       opts = { nowait = true }
     },
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
-    ["<leader>sw"] = {
-      function()
-        require("spectre").open_visual()
-      end,
-      "Search current word",
-      opts = { nowait = true }
-    },
-  },
-}
-
-M.lspconfig = {
-  plugin = true,
-  n = {
-    ["K"] = { "<cmd> Lspsaga hover_doc <CR>", "Hover doc", opts = { nowait = true } },
-    ["<leader>pd"] = { "<cmd> Lspsaga peek_definition <CR>", "Peek definition", opts = { nowait = true } },
-    ["gr"] = { "<cmd> Lspsaga finder <CR>", "Toggle Trouble for refs", opts = { nowait = true } },
-    ["gd"] = { "<cmd> Lspsaga goto_definition <CR>", "Go to Def", opts = { nowait = true } },
-    ["<leader>D"] = { "<cmd> Lspsaga goto_type_definition <CR>", "Type Defs", opts = { nowait = true } },
-    ["<leader>tq"] = { "<cmd> TroubleToggle quickfix <CR>", "Toggle Trouble for fixes", opts = { nowait = true } },
-    ["<leader>q"] = { "<cmd> TroubleToggle document_diagnostics <CR>", "Toggle Trouble for doc", opts = { nowait = true } },
-    ["<leader>tw"] = { "<cmd> TroubleToggle workspace_diagnostics <CR>", "Toggle Trouble for wrkspc", opts = { nowait = true } }
   }
 }
 

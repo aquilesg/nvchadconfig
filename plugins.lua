@@ -125,6 +125,23 @@ local plugins   = {
       "GitBlameCopyFileURL",
     }
   },
+  {
+    'SuperBo/fugit2.nvim',
+    opts = {},
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      {
+        'chrisgrieser/nvim-tinygit',
+        dependencies = { 'stevearc/dressing.nvim' }
+      },
+    },
+    cmd = { 'Fugit2', 'Fugit2Graph' },
+    keys = {
+      { '<leader>F', mode = 'n', '<cmd>Fugit2<cr>' }
+    }
+  },
   -- Lazy tools
   {
     "kdheepak/lazygit.nvim",
@@ -224,6 +241,9 @@ local plugins   = {
     config = function()
       require("custom.configs.obsidian")
     end,
+    init = function()
+      require("core.utils").load_mappings "obsidian"
+    end,
   },
   {
     "natecraddock/workspaces.nvim",
@@ -296,6 +316,9 @@ local plugins   = {
     config = function()
       require("dapui").setup()
       require("custom.configs.nvim-dap")
+    end,
+    init = function()
+      require("core.utils").load_mappings "dap"
     end,
   }
 }

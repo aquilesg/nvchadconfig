@@ -34,12 +34,12 @@ dap.adapters.go = function(callback, _)
       end)
     end
   end)
-  -- Wait for delve to start
+
   vim.defer_fn(function()
     callback { type = "server", host = "127.0.0.1", port = port }
   end, 100)
 end
--- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+
 dap.configurations.go = {
   {
     type = "go",
@@ -49,12 +49,11 @@ dap.configurations.go = {
   },
   {
     type = "go",
-    name = "Debug test", -- configuration for debugging test files
+    name = "Debug test",
     request = "launch",
     mode = "test",
     program = "${file}",
   },
-  -- works with go.mod packages and sub packages
   {
     type = "go",
     name = "Debug test (go.mod)",
@@ -64,7 +63,7 @@ dap.configurations.go = {
   },
 }
 
--- Custom functions to make life easier
+
 function M.SetDAPBreakpoint()
   local condition = vim.fn.input('Condition: ')
   local hit_condition = vim.fn.input('Hit Condition: ')

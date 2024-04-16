@@ -1,9 +1,10 @@
 require("neodev").setup({})
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+local configs = require("plugins.configs.lspconfig")
+local on_attach = configs.on_attach
+local on_init = configs.on_init
+local capabilities = configs.capabilities
 
 local lspconfig = require "lspconfig"
-
 local servers = {
   "arduino_language_server",
   "ansiblels",
@@ -25,34 +26,33 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  local opts = {
+    on_init = on_init,
     on_attach = on_attach,
     capabilities = capabilities,
   }
-end
 
-lspconfig.pylsp.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        flake8 = {
-          enabled = true
-        },
-        pylint = {
-          enabled = true
+  if lsp == "sqlls" then
+    opts.filetypes = { 'sql' }
+    opts.root_dir = function(_)
+      return vim.loop.cwd()
+    end
+  end
+
+  if lsp == "pylsp" then
+    opts.settings = {
+      pylsp = {
+        plugins = {
+          flake8 = {
+            enabled = true
+          },
+          pylint = {
+            enabled = true
+          }
         }
       }
     }
-  }
-}
+  end
 
-lspconfig.sqlls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { 'sql' },
-  root_dir = function(_)
-    return vim.loop.cwd()
-  end,
-}
+  lspconfig[lsp].setup(opts)
+end

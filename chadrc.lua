@@ -8,7 +8,7 @@ M.ui = {
     style = "flat_dark",
   },
   theme = "everforest",
-  theme_toggle = { "everforest", "everforest_light" },
+  theme_toggle = { "ayu_light", "everforest" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,

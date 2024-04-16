@@ -29,6 +29,10 @@ require("obsidian").setup({
           subdir = "Templates",
         },
       }
+    },
+    {
+      name = "robot",
+      path = "~/Repos/robot/Docs",
     }
   },
   suppress_missing_scope = {
