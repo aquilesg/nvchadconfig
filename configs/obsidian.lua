@@ -18,22 +18,6 @@ require("obsidian").setup({
         },
       }
     },
-    {
-      name = "personal",
-      path = "~/Documents/Personal",
-      overrides = {
-        daily_notes = {
-          folder = "DailyNotes",
-        },
-        templates = {
-          subdir = "Templates",
-        },
-      }
-    },
-    {
-      name = "robot",
-      path = "~/Repos/robot/Docs",
-    }
   },
   suppress_missing_scope = {
     projects_v2 = true,

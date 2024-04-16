@@ -52,7 +52,6 @@ M.mason = {
     "graphql-language-service-cli",
     "json-lsp",
     "python-lsp-server",
-    "ruby-lsp",
     "shellcheck",
     "terraform-ls",
     "tflint",
