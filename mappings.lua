@@ -9,6 +9,13 @@ M.general = {
 
     -- Allow Override the telescope to show hidden files
     ["<leader>ff"] = { "<cmd> Telescope find_files hidden=true <CR>", "File search", opts = { nowait = true } },
+    ["<leader>fw"] = {
+      function()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end,
+      "File search with args",
+      opts = { nowait = true }
+    },
 
     -- Symbol outlines
     ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "Open Code Actions", opts = { nowait = true } },
@@ -16,7 +23,7 @@ M.general = {
     -- Term toggle
     ["<A-i>"] = { "<cmd> Lspsaga term_toggle <CR>", "Open terminal" },
     -- Enable git blame in line
-    ["<leader>ge"] = { "<cmd> GitBlameToggle <CR>", "Toggle git blame", opts = { nowait = true } },
+    ["<leader>ge"] = { "<cmd> BlameToggle <CR>", "Toggle git blame", opts = { nowait = true } },
     -- Diff View Open
     ["<leader>dv"] = { "<cmd> DiffviewOpen <CR>", "Open DiffView", opts = { nowait = true } },
     -- LazyGit

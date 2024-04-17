@@ -25,6 +25,9 @@ local plugins   = {
   },
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-live-grep-args.nvim",
+    },
     opts = overrides.telescope,
   },
   {
@@ -113,17 +116,11 @@ local plugins   = {
     },
   },
   {
-    "f-person/git-blame.nvim",
-    cmd = {
-      "GitBlameOpenCommitURL",
-      "GitBlameToggle",
-      "GitBlameEnable",
-      "GitBlameDisable",
-      "GitBlameCopySHA",
-      "GitBlameCopyCommitURL",
-      "GitBlameOpenFileURL",
-      "GitBlameCopyFileURL",
-    }
+    "FabijanZulj/blame.nvim",
+    cmd = { "BlameToggle" },
+    config = function()
+      require("blame").setup()
+    end
   },
   {
     'SuperBo/fugit2.nvim',
